@@ -1,6 +1,6 @@
 # roll-it
 
-Keep your AWS Credentials fresh 🍊.
+Keep your AWS Credentials fresh 🍊 on Windows, Mac, Linux (arm or x86)!
 
 Programmatically roll your AWS IAM access keys with rollit.
 
