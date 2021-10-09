@@ -1,4 +1,4 @@
-module rolllit
+module rollit
 
 go 1.16
 

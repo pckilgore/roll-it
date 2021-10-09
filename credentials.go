@@ -52,15 +52,15 @@ type Credentials struct {
 	Config          aws.Config
 }
 
-func EnvironmentCredentials() Credentials {
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+func EnvironmentCredentials(ctx context.Context) Credentials {
+	cfg, err := config.LoadDefaultConfig(ctx)
 	if err != nil {
-		Boom(err, "There was an error loading configuration:")
+		Boom("There was an error loading configuration:", err)
 	}
 
-	creds, err := cfg.Credentials.Retrieve(context.TODO())
+	creds, err := cfg.Credentials.Retrieve(ctx)
 	if err != nil {
-		Boom(err, "There was an error loading credentials chain:")
+		Boom("There was an error loading credentials chain:", err)
 	}
 
 	return Credentials{creds.AccessKeyID, creds.SecretAccessKey, cfg}
@@ -76,7 +76,17 @@ func GetCredentialsFile() CredentialsFile {
 	cfg, err := ioutil.ReadFile(path)
 	if err != nil {
 		msg := fmt.Sprintf("Can't load config from %s", path)
-		Boom(err, msg)
+		Boom(msg, err)
 	}
 	return CredentialsFile{path, string(cfg)}
+}
+
+func WriteCredentialsFile(to CredentialsFile) {
+	err := ioutil.WriteFile(to.filepath, []byte(to.content), 644)
+
+	if err != nil {
+		note := "------Unable to write credentials: Recovery Information------"
+		fmt.Printf("%s\n%s\n%s\n\n", note, to.content, note)
+		Boom("Failed to write new credentials to file.", err)
+	}
 }
