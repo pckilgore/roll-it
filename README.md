@@ -21,6 +21,14 @@ first using it so that there is a free slot for your new key to be created in.
 
 Schedule itself. Use other tools for that.
 
+## Installation
+
+Download the latest [release](https://github.com/pckilgore/roll-it/releases),
+and either put it in your PATH or somewhere your scheduler can access both it
+and your `~/.aws/credentials` file. There are no options and no output for a
+successful key rotation, but a failure will print information and exit with a
+non-zero exit code.
+
 ## Project Goals
 
  1. Auditability:
