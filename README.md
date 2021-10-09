@@ -2,7 +2,10 @@
 
 Keep your AWS Credentials fresh 🍊 on Windows, Mac, Linux (arm or x86)!
 
-Programmatically roll your AWS IAM access keys with rollit.
+## What it Does
+
+Programmatically roll your AWS IAM access keys and secret. Helpful for
+automatically ensuring compliance with organization key rotation policies.
 
 Detects your current credential chain and attempts to match it to a credentials
 file.
@@ -14,6 +17,29 @@ This program fails safe: It will not delete any keys until is has successfully
 created new ones. Thus, you may need to delete old keys in the console before
 first using it so that there is a free slot for your new key to be created in.
 
+## What it Does Not Do
+
+Schedule itself. Use other tools for that.
+
+## Project Goals
+
+ 1. Auditability:
+    - No dependencies outside Go standard library and official AWS SDKs. Your
+      associate engineers should be able to determine this program is safe to
+      handle your organization's sensitive credentials.
+ 3. Respectful and Safe:
+    - It should always fail-safe, and try to never leave the user without valid
+      credentials, even if that means console intervention is neccessary for it
+      to begin (or continue) to work.
+ 3. Sane defaults:
+    - It should work out of the box for standard setups, and should not be
+      extended to support exotic setups.
+ 4. Cross-Platform:
+    - Make no assumptions about operating system or scheduler.
+ 5. Small & Fast:
+    - You should never notice it running, which should minimize the consequences
+      of a mid-operation key rotation.
+
 ## Running Automatically
 
 You need to use some other program to schedule execution.
@@ -24,9 +50,9 @@ and add an entry to your user crontab referencing the executable:
 ```console
 $ crontab -e # Edit to add...
 $ crontab -l # Show what was added
-50 12 * * 1-5 ~/bin/rollit
+50 9 * * 1-5 ~/bin/rollit
 ```
-That example runs `rollit` Mon-Fri at 12:55 (assuming rollit executable copied
+That example runs `rollit` Mon-Fri at 9:55 AM (assuming rollit executable copied
 to $HOME/bin).
 
 For more ideas, please [use the wiki](https://github.com/pckilgore/roll-it/wiki)
