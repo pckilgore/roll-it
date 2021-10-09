@@ -24,10 +24,10 @@ Schedule itself. Use other tools for that.
 ## Installation
 
 Download the latest [release](https://github.com/pckilgore/roll-it/releases),
-and either put it in your PATH or somewhere your scheduler can access both it
-and your `~/.aws/credentials` file. There are no options and no output for a
-successful key rotation, but a failure will print information and exit with a
-non-zero exit code.
+for your OS and architecture, and either put it in your PATH or somewhere your
+scheduler can access both it and your `~/.aws/credentials` file. There are no
+options and no output for a successful key rotation, but a failure will print
+information about the error and exit with a non-zero exit code.
 
 ## Project Goals
 
