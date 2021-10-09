@@ -61,7 +61,7 @@ $ crontab -e # Edit to add...
 $ crontab -l # Show what was added
 50 9 * * 1-5 ~/bin/rollit
 ```
-That example runs `rollit` Mon-Fri at 9:55 AM (assuming rollit executable copied
+That example runs `rollit` Mon-Fri at 9:50 AM (assuming rollit executable copied
 to $HOME/bin).
 
 For more ideas, please [use the wiki](https://github.com/pckilgore/roll-it/wiki)
