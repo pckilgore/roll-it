@@ -11,5 +11,21 @@ This program fails safe: It will not delete any keys until is has successfully c
 new ones. Thus, you may need to delete old keys in the console before first using it
 so that there is a free slot for your new key to be created in.
 
+## Running Automatically
+
+You need to use some other program to schedule execution.
+
+For example, in a user crontab on Apple/Linux, extract the binary to somewhere in your
+path, and add it to your user crontab:
+
+```console
+$ crontab -e # Edit to add...
+$ crontab -l # Show what was added
+50 12 * * 1-5 ~/bin/rollit
+```
+That example runs `rollit` Mon-Fri at 12:55 keeping your AWS Credentials very fresh 🍊.
+
+For more ideas, please [use the wiki](https://github.com/pckilgore/roll-it/wiki)
+
 (c) 2021 Patrick Kilgore
 See LICENSE
