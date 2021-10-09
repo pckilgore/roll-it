@@ -1,6 +1,8 @@
 # roll-it
 
-Programmatically roll your AWS IAM access keys.
+Keep your AWS Credentials fresh 🍊.
+
+Programmatically roll your AWS IAM access keys with rollit.
 
 Detects your current credential chain and attempts to match it to a credentials file.
 
@@ -23,9 +25,10 @@ $ crontab -e # Edit to add...
 $ crontab -l # Show what was added
 50 12 * * 1-5 ~/bin/rollit
 ```
-That example runs `rollit` Mon-Fri at 12:55 keeping your AWS Credentials very fresh 🍊.
+That example runs `rollit` Mon-Fri at 12:55 (assuming $HOME/bin is in your path).  
 
 For more ideas, please [use the wiki](https://github.com/pckilgore/roll-it/wiki)
 
 (c) 2021 Patrick Kilgore
+
 See LICENSE
