@@ -37,8 +37,7 @@ Schedule itself. Use other tools for that.
  4. Cross-Platform:
     - Make no assumptions about operating system or scheduler.
  5. Small & Fast:
-    - You should never notice it running, which should minimize the consequences
-      of a mid-operation key rotation.
+    - You should never notice it running.
  6. User Facing:
     - Not designed—and should not be used—to rotate server or service keys.
 
