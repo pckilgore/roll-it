@@ -39,6 +39,8 @@ Schedule itself. Use other tools for that.
  5. Small & Fast:
     - You should never notice it running, which should minimize the consequences
       of a mid-operation key rotation.
+ 6. User Facing:
+    - Not designed—and should not be used—to rotate server or service keys.
 
 ## Running Automatically
 
