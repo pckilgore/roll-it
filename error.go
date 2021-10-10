@@ -8,7 +8,7 @@ import (
 func Boom(msg string, err error) {
 	fmt.Fprintf(
 		os.Stderr,
-		"\n%s\n%+v\n%s\n\n",
+		"\n%s\n%+v\n\n%s\n",
 		msg,
 		err,
 		"Stopping for manual intervention",

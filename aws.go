@@ -28,11 +28,9 @@ func CreateKey(ctx context.Context, client *iam.Client) new_key {
 	}
 }
 
-func DeleteKey(ctx context.Context, client *iam.Client, key_id string) {
+func DeleteKey(ctx context.Context, client *iam.Client, key_id string) error {
 	input := &iam.DeleteAccessKeyInput{AccessKeyId: &key_id}
 	_, err := client.DeleteAccessKey(ctx, input)
 
-	if err != nil {
-		Boom("Could not delete old key", err)
-	}
+	return err
 }

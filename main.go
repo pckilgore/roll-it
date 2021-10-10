@@ -42,10 +42,9 @@ func main() {
 	new_key := CreateKey(ctx, client)
 
 	// Parallelize deletion of current credentials
-	del_op := make(chan bool)
+	del_op := make(chan error)
 	go func() {
-		DeleteKey(ctx, client, string(key_match))
-		del_op <- true
+		del_op <- DeleteKey(ctx, client, string(key_match))
 	}()
 
 	// Write out new credentials
@@ -53,6 +52,13 @@ func main() {
 	creds_file.content = SecretKeyLocator.Replace(secret_match, new_key.secret, creds_file.content)
 	WriteCredentialsFile(creds_file)
 
-	// Wait for delete routine to complete
-	<-del_op
+	// Wait for delete routine to complete and handle its errors, which we would
+	// not otherwise want interupting writing new credentials to the local system.
+	del_err := <-del_op
+	if del_err != nil {
+		note := `Error! Cannot delete old IAM keys from server, however, your new 
+keys were successfully saved to your credentials file. You might have to remove 
+old keys manually via the console or CLI before rollit will work again.`
+		Boom(note, del_err)
+	}
 }
