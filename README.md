@@ -29,6 +29,15 @@ scheduler can access both it and your `~/.aws/credentials` file. There are no
 options and no output for a successful key rotation, but a failure will print
 information about the error and exit with a non-zero exit code.
 
+roll-it is also available through a homebrew/linuxbrew tap, however bottling
+is limited, so you may need to `--build-from-source` on installation (which
+is painless (thanks Go!) but takes a bit longer).
+
+```console
+$ brew tap pckilgore/roll-it
+$ brew install roll-it # optionally --build-from-source if no bottle
+```
+
 ## Project Goals
 
  1. Auditability:
