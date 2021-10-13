@@ -4,7 +4,7 @@ Keep your AWS Credentials fresh 🍊 on Windows, Mac, Linux (arm or x86)!
 
 ## What it Does
 
-Programmatically roll your AWS IAM access keys and secret. Helpful for
+Programmatically rotate your AWS IAM access keys and secret. Helpful for
 automatically ensuring compliance with organization key rotation policies.
 
 Detects your current credential chain and attempts to match it to a credentials
